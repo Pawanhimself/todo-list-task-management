@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Update Task</h1>
+    </header>
+
+    <section class="add-task-form">
+        <form id="form-task" action="/edit-task/<%= task.id %>" method="POST">
+
+            <div>
+                <div class="form-group">
+                    <label for="task">Task Name:</label>
+                    <input type="text" value="<%= task.task %>" id="task" placeholder="Learn DSA" name="task" required>
+                </div>
+           
+            </body>
+                <div class="form-group">
+                    <label for="priority">Priority:</label>
+                    <select id="priority" name="priority" required>
+                        <option value="low" <% if( task.priority === 'low'){ %> selected <% } %> >Low</option>
+                        <option value="medium" <% if( task.priority === 'medium'){ %> selected <% } %> >Medium</option>
+                        <option value="high" <% if( task.priority === 'high'){ %> selected <% } %> >High</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Update Task</button>
+        </form>
+    </section>
+    <footer>
+        <h3><p>© 2025 pawanhimself@gmail.com</p></h3>
+    </footer>
+</html>

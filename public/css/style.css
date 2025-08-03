@@ -1,0 +1,155 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    background: linear-gradient(to bottom right, #f3eafc, #fceefd);
+}
+
+header, footer {
+    background: linear-gradient(to right, #654ea3, #eaafc8);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+header h1 {
+    font-size: 1.6em;
+    margin: 0;
+}
+
+section {
+    max-width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(to right, #654ea3, #eaafc8);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.some-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.add-task .btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-tasks select {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+} 
+
+.task-list {
+    margin-top: 30px;
+}
+
+.task-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd1dd;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.task-details {
+    display: flex;
+}
+
+.iscomplete {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task {
+    margin-left: 10px;
+}
+
+.priority-text {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding:8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+#form-task input[type="text"], #form-task select,#form-task button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+input[id^="task-status"]  {
+    display: none;
+}
+
+footer {
+    width: 100%;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+}
+
+footer p {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+@media only screen and (max-width: 600px) {
+    section {
+        max-width: 96%;
+    }
+
+    .priority-text {
+        margin-left: 2px;
+    }
+
+    header, footer {
+        padding: 30px;
+    }
+}

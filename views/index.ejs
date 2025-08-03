@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>My Todo List</h1>
+  </header>
+  
+  <section class="todos">
+    <div class="todo-container">
+        <div class="some-actions"> 
+            <div class="add-task">
+                <a href="/add-task"><button class="btn">+ Add Task</button></a>
+            </div>
+            <div class="filter-tasks">
+                <select name="" id="filter-tasks" onchange="filterTasks()">
+                    <option value="all" <% if( priority === 'all'){ %> selected <% } %> >All </option>
+                    <option value="low" <% if( priority === 'low'){ %> selected <% } %> >Low</option>
+                    <option value="medium" <% if( priority === 'medium'){ %> selected <% } %> >Medium</option>
+                    <option value="high" <% if( priority === 'high'){ %> selected <% } %> >High</option>
+                </select>
+            </div>
+        </div>
+        <div class="task-list">
+            <% tasks.forEach(function(task) { %>
+            <div class="task-item">
+                <div class="task-details">
+                    <div class="iscompleted">
+                        <form action="/update-status/<%= task.id %>" id="form-<%= task.id %>" method="POST">
+                            <input type="checkbox" onclick="updateTaskStatus(this)" id="isCompleted-<%= task.id %>" <% if(task.isCompletd){  %> checked <% } %> >
+                            <input type="submit" name="" id="task-status-<%= task.id %>">
+                        </form>
+                    </div>
+                    <div>
+                        <h4 class="task" id="task-<%= task.id %>" <% if(task.isCompletd){  %> style="text-decoration: line-through;" <% } %>  ><%= task.task %> <span class="priority-text">(<%= task.priority %>)</span></h4>
+                    </div>
+                </div>  
+                <div class="task-actions">
+                    <a href="/edit-task/<%= task.id %>"><button class="btn edit-btn">Edit</button></a>
+                    <form action="/delete-task/<%= task.id %>" method="post">
+                        <button type="submit" class="btn delete-btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+  </section>
+
+<footer>
+    <h3><p>© 2025 pawanhimself@gmail.com</p></h3>
+</footer>
+<script>
+    const filterTasks = () => { 
+        let filter = document.getElementById('filter-tasks').value;
+        location.href = location.origin + `?priority=${filter}`;
+    } 
+
+    const updateTaskStatus = (elem) => {
+        formId = elem.id.replace("isCompleted","form");
+        document.getElementById(formId).submit();
+    }
+</script>
+</body>
+</html>
