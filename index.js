@@ -2,10 +2,12 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const { v4: uuidv4 } = require('uuid');
+const methodOverride = require('method-override');
 
 const app = express();
 const port = 3000;
 
+app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -68,10 +70,10 @@ app.get('/edit-task/:id', (req, res) => {
 });
 
 // update task
-app.post('/edit-task/:id', (req, res) => {
+app.put('/edit-task/:id', (req, res) => {
     const { id } = req.params;
     const { task, priority } = req.body;
-    
+        
     const taskIndex = todoTasks.findIndex(t => t.id === id);    
     if (taskIndex !== -1) {
         todoTasks[taskIndex] = { id, task, priority };
@@ -82,10 +84,10 @@ app.post('/edit-task/:id', (req, res) => {
     res.redirect('/');
 });
 
-app.post('/delete-task/:id', (req, res) => {
+app.delete('/delete-task/:id', (req, res) => {
     const { id } = req.params;
     const taskIndex = todoTasks.findIndex(t => t.id === id);
-    
+
     if (taskIndex !== -1) {
         todoTasks.splice(taskIndex, 1);
         console.log(`Task with id ${id} deleted`);

@@ -42,7 +42,7 @@
                 </div>  
                 <div class="task-actions">
                     <a href="/edit-task/<%= task.id %>"><button class="btn edit-btn">Edit</button></a>
-                    <form action="/delete-task/<%= task.id %>" method="post">
+                    <form action="/delete-task/<%= task.id %>?_method=DELETE" method="post">
                         <button type="submit" class="btn delete-btn">Delete</button>
                     </form>
                 </div>
